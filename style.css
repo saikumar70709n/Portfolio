@@ -1,27 +1,39 @@
 body {
-    background: url("templates/images/b-tech-computer-science.png") no-repeat center center fixed;
-    background-size: cover;
+    background: 
+        url("templates/images/b-tech-computer-science.png") no-repeat center center fixed,
+        linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #53354a);
+    background-size: cover, 400% 400%;
+    animation: gradientShift 25s ease infinite;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
 
+/* Background Animation */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Container Styling */
 .container {
-    background: rgba(255, 255, 255, 0.1); 
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
 }
 
-
+/* Header Styling */
 header {
-    background: rgba(218, 210, 210, 0.6); 
+    background: rgba(218, 210, 210, 0.6);
     padding: 20px 0;
     text-align: center;
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
+/* Profile Section */
 .profile {
     text-align: center;
     margin-bottom: 10px;
@@ -35,9 +47,11 @@ header {
     object-fit: cover;
 }
 
+/* Navigation Menu */
 nav ul {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
 nav ul li {
@@ -51,14 +65,28 @@ nav ul li a {
     font-size: 18px;
 }
 
+nav ul li a.active {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+/* Responsive Navigation */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+/* Section Styling */
 section {
-    background: rgba(0, 0, 0, 0.5); 
-    color: white; 
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
     padding: 40px;
     border-radius: 10px;
 }
 
-
+/* Projects Grid */
 .projects-grid {
     display: flex;
     justify-content: center;
@@ -67,26 +95,21 @@ section {
 }
 
 .project {
-    background: #007bff;
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-    padding: 15px;
+    padding: 1rem;
     border-radius: 10px;
     width: 80%;
     max-width: 600px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-footer {
-    background: #222;
-    color: white;
-    padding: 10px;
+.project:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 600px) {
-    nav ul li {
-        display: block;
-        margin-bottom: 10px;
-    }
-}
+/* Resume Button */
 .resume-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -103,3 +126,9 @@ footer {
     background-color: #0056b3;
 }
 
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 10px;
+}

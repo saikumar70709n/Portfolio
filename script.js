@@ -59,3 +59,28 @@ document.querySelectorAll("nav a").forEach(link => {
         gsap.to(window, {duration: 1, scrollTo: target, ease: "power2.out"});
     });
 });
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray("section").forEach((section) => {
+  gsap.from(section, {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%",
+    }
+  });
+});
+const navLinks = document.querySelectorAll('nav ul li a');
+window.addEventListener('scroll', () => {
+  let fromTop = window.scrollY;
+  navLinks.forEach(link => {
+    let section = document.querySelector(link.getAttribute('href'));
+    if (section.offsetTop <= fromTop + 100 && section.offsetTop + section.offsetHeight > fromTop + 100) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+});
